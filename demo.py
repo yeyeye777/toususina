@@ -22,7 +22,7 @@ signature=hashlib.sha256((''.join(bb)).encode('utf-8')).hexdigest()
 print(ts,rs,signature)
 
 import requests
-
+header = {"user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 12_0_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36"}
 url = "https://tousu.sina.com.cn/api/index/feed?ts={}&rs={}&signature={}&type=2&page_size=10&page=1&_={}".format(ts,rs,signature,ts)
-response = requests.request("GET", url)
+response = requests.request("GET", url,headers = header)
 print(json.loads(response.text))
